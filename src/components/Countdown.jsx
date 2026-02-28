@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 
 export default function Countdown() {
-  // 🔴 EVENT DATE → 12th March 2026, 9:00 AM
-  const eventDate = new Date("2026-03-12T09:00:00").getTime();
+
+  // ✅ NEW DATE → 13 March 2026, 9:00 AM
+  const eventDate = new Date("2026-03-13T09:00:00").getTime();
 
   const [timeLeft, setTimeLeft] = useState({});
 
@@ -30,23 +31,42 @@ export default function Countdown() {
 
   if (timeLeft.ended) {
     return (
-      <p className="text-cyan-400 text-xl mt-10">
+      <p className="text-cyan-400 text-lg sm:text-xl mt-8">
         🚀 The Event Has Started!
       </p>
     );
   }
 
   return (
-    <div className="mt-12 flex gap-6 justify-center text-white">
+    <div
+      className="
+        mt-8
+        flex
+        gap-3 sm:gap-6
+        justify-center
+        text-white
+        flex-wrap
+      "
+    >
       {["days", "hours", "minutes", "seconds"].map((unit) => (
         <div
           key={unit}
-          className="flex flex-col items-center bg-black/40 backdrop-blur-md px-6 py-4 rounded-xl border border-cyan-400/30"
+          className="
+            flex flex-col items-center
+            bg-black/40
+            backdrop-blur-md
+            px-4 sm:px-6
+            py-3 sm:py-4
+            rounded-xl
+            border border-cyan-400/30
+            min-w-[70px] sm:min-w-[90px]
+          "
         >
-          <span className="text-3xl font-bold text-cyan-400">
+          <span className="text-xl sm:text-3xl font-bold text-cyan-400">
             {String(timeLeft[unit] || 0).padStart(2, "0")}
           </span>
-          <span className="text-sm uppercase tracking-widest text-gray-300">
+
+          <span className="text-[10px] sm:text-sm uppercase tracking-widest text-gray-300">
             {unit}
           </span>
         </div>

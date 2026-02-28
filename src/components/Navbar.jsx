@@ -4,8 +4,7 @@ import SparkleNavbar from "./SparkleNavbar";
 
 import svmaLogo from "../assets/svma.jpeg";
 import codefiestaLogo from "../assets/codefiesta.png";
-import newlogo from "../assets/newlogo.png"; // 👈 Import new logo as React component
-
+import newlogo from "../assets/newlogo.png";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -23,16 +22,10 @@ export default function Navbar() {
   const [activeItem, setActiveItem] = useState("Home");
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const formLink = "https://forms.gle/whti4Cuq522zndsW9";
+
   const scrollToSection = (name) => {
     setMobileOpen(false);
-
-    if (window.location.pathname !== "/") {
-      navigate("/");
-      setTimeout(() => {
-        scrollToSection(name);
-      }, 300);
-      return;
-    }
 
     if (name === "Home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -42,16 +35,13 @@ export default function Navbar() {
     const el = document.getElementById(name.toLowerCase());
     if (!el) return;
 
-    const offset = 90;
     window.scrollTo({
-      top: el.offsetTop - offset,
+      top: el.offsetTop - 80,
       behavior: "smooth",
     });
   };
 
   useEffect(() => {
-    if (window.location.pathname !== "/") return;
-
     const sections = items
       .map((i) => document.getElementById(i.toLowerCase()))
       .filter(Boolean);
@@ -76,29 +66,30 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl">
-      <div className="relative flex items-center justify-between px-4 md:px-6 py-3 rounded-2xl bg-neutral-900/90 backdrop-blur-md shadow-xl">
+    <header className="fixed top-0 left-0 w-full z-50">
+      <div className="flex items-center justify-between px-3 sm:px-6 py-3 bg-neutral-900/95 backdrop-blur-md shadow-lg">
 
         {/* LOGOS */}
-        <div className="flex items-center gap-5 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-4">
           <img
             src={svmaLogo}
-            alt="SVMA College"
-            className="h-10 md:h-12 object-contain"
+            alt="SVMA"
+            className="h-8 sm:h-10 md:h-12"
           />
 
           <img
             src={codefiestaLogo}
-            alt="CodeFiesta 6.0"
-            className="h-10 md:h-14 object-contain"
+            alt="CodeFiesta"
+            className="h-8 sm:h-12 md:h-14"
           />
 
           <img
-            src={newlogo}   // 👈 Replace with your new logo path
+            src={newlogo}
             alt="New Logo"
-            className="h-10 md:h-12 object-contain"
+            className="h-8 sm:h-10 md:h-12"
           />
         </div>
+
         {/* DESKTOP NAV */}
         <div className="hidden md:flex flex-1 justify-center">
           <SparkleNavbar
@@ -109,54 +100,47 @@ export default function Navbar() {
           />
         </div>
 
-        {/* DESKTOP APPLY */}
+        {/* APPLY BUTTON */}
         <button
-          onClick={() => navigate("/register")}
-          className="hidden md:block bg-cyan-400 text-black px-5 py-2 rounded-xl font-semibold hover:bg-cyan-300 transition shrink-0"
+          onClick={() => window.open(formLink, "_blank")}
+          className="hidden md:block bg-cyan-400 text-black px-4 py-2 rounded-lg font-semibold hover:bg-cyan-300 transition"
         >
           Apply
         </button>
 
-        {/* MOBILE HAMBURGER */}
+        {/* MOBILE MENU BUTTON */}
         <button
           className="md:hidden text-white text-2xl"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           ☰
         </button>
+      </div>
 
-        {/* MOBILE MENU */}
-        {mobileOpen && (
-          <div className="absolute top-full left-0 mt-3 w-full rounded-2xl bg-neutral-900/95 backdrop-blur-md shadow-xl p-5 md:hidden">
-            <ul className="flex flex-col gap-4 text-center">
-              {items.map((item) => (
-                <li key={item}>
-                  <button
-                    onClick={() => scrollToSection(item)}
-                    className={`text-sm font-medium transition ${activeItem === item
-                        ? "text-cyan-400"
-                        : "text-gray-300 hover:text-white"
-                      }`}
-                  >
-                    {item}
-                  </button>
-                </li>
-              ))}
-              <li>
+      {/* MOBILE MENU */}
+      {mobileOpen && (
+        <div className="md:hidden bg-neutral-900 text-white p-4">
+          <ul className="flex flex-col gap-4 text-center">
+            {items.map((item) => (
+              <li key={item}>
                 <button
-                  onClick={() => {
-                    setMobileOpen(false);
-                    navigate("/register");
-                  }}
-                  className="block mt-4 bg-cyan-400 text-black px-5 py-2 rounded-xl font-semibold hover:bg-cyan-300 transition"
+                  onClick={() => scrollToSection(item)}
+                  className="w-full"
                 >
-                  Apply
+                  {item}
                 </button>
               </li>
-            </ul>
-          </div>
-        )}
-      </div>
+            ))}
+
+            <button
+              onClick={() => window.open(formLink, "_blank")}
+              className="bg-cyan-400 text-black px-4 py-2 rounded-lg"
+            >
+              Apply
+            </button>
+          </ul>
+        </div>
+      )}
     </header>
   );
 }

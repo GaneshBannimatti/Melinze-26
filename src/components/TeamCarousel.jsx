@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-/* simple class joiner */
-const cn = (...c) => c.filter(Boolean).join(" ");
-
 export default function TeamCarousel({ members = [], autoPlay = 0 }) {
   const [index, setIndex] = useState(0);
   const total = members.length;
@@ -27,14 +24,45 @@ export default function TeamCarousel({ members = [], autoPlay = 0 }) {
   return (
     <section
       id="team"
-      className="min-h-screen flex flex-col items-center justify-center text-white"
+      className="
+        py-16 sm:py-20 md:py-24
+        px-4 sm:px-6 md:px-10 lg:px-16
+        flex flex-col items-center
+        text-white
+      "
     >
-      <h2 className="text-4xl md:text-6xl font-bold mb-12">
-        Our <span className="text-cyan-400">Team</span>
+      {/* Heading */}
+      <h2
+        className="
+          text-2xl
+          sm:text-3xl
+          md:text-4xl
+          lg:text-5xl
+          font-bold
+          mb-8 sm:mb-10
+          text-center
+        "
+      >
+        
       </h2>
 
       {/* Card */}
-      <div className="relative w-[320px] h-[420px]">
+      <div
+        className="
+          relative
+          w-[240px]
+          sm:w-[280px]
+          md:w-[320px]
+          lg:w-[360px]
+          xl:w-[420px]
+
+          h-[320px]
+          sm:h-[360px]
+          md:h-[420px]
+          lg:h-[460px]
+          xl:h-[520px]
+        "
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={members[index].id}
@@ -42,9 +70,13 @@ export default function TeamCarousel({ members = [], autoPlay = 0 }) {
             animate={{ opacity: 1, scale: 1, x: 0 }}
             exit={{ opacity: 0, scale: 0.85, x: -120 }}
             transition={{ duration: 0.5 }}
-            className="absolute inset-0 rounded-2xl overflow-hidden
-                       bg-black/60 border border-cyan-400/30
-                       shadow-[0_0_40px_rgba(34,211,238,0.25)]"
+            className="
+              absolute inset-0
+              rounded-2xl overflow-hidden
+              bg-black/60
+              border border-cyan-400/30
+              shadow-[0_0_40px_rgba(34,211,238,0.25)]
+            "
           >
             <img
               src={members[index].image}
@@ -56,28 +88,60 @@ export default function TeamCarousel({ members = [], autoPlay = 0 }) {
       </div>
 
       {/* Info */}
-      <div className="mt-6 text-center">
-        <h3 className="text-xl font-semibold text-cyan-400">
+      <div className="mt-5 sm:mt-6 text-center">
+        <h3
+          className="
+            text-lg
+            sm:text-xl
+            md:text-2xl
+            font-semibold
+            text-cyan-400
+          "
+        >
           {members[index].name}
         </h3>
-        <p className="text-gray-300">{members[index].role}</p>
+
+        <p
+          className="
+            text-sm
+            sm:text-base
+            text-gray-300
+          "
+        >
+          {members[index].role}
+        </p>
       </div>
 
       {/* Controls */}
-      <div className="flex gap-6 mt-8">
+      <div className="flex gap-4 sm:gap-6 mt-6 sm:mt-8">
         <button
           onClick={prev}
-          className="px-5 py-2 rounded-full bg-black/60
-                     border border-cyan-400/40
-                     hover:bg-cyan-400/10 transition"
+          className="
+            px-4 sm:px-5
+            py-2
+            text-sm sm:text-base
+            rounded-full
+            bg-black/60
+            border border-cyan-400/40
+            hover:bg-cyan-400/10
+            transition
+          "
         >
           ◀ Prev
         </button>
+
         <button
           onClick={next}
-          className="px-5 py-2 rounded-full bg-black/60
-                     border border-cyan-400/40
-                     hover:bg-cyan-400/10 transition"
+          className="
+            px-4 sm:px-5
+            py-2
+            text-sm sm:text-base
+            rounded-full
+            bg-black/60
+            border border-cyan-400/40
+            hover:bg-cyan-400/10
+            transition
+          "
         >
           Next ▶
         </button>
