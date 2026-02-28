@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: linear-gradient(
+    -45deg,
+    #000000,
+    #12002b,
+    #001f2d,
+    #000000
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+section {
+  scroll-margin-top: 64px; /* navbar height */
+}
+
+/* Neon glow utilities */
+.glow-cyan {
+  box-shadow:
+    0 0 20px rgba(34, 211, 238, 0.35),
+    0 0 40px rgba(34, 211, 238, 0.25);
+}
+
+.glow-purple {
+  box-shadow:
+    0 0 20px rgba(168, 85, 247, 0.35),
+    0 0 40px rgba(168, 85, 247, 0.25);
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+/* 🌈 Aurora Text Effect */
+.aurora-text {
+  background: linear-gradient(
+    120deg,
+    #22d3ee,
+    #a855f7,
+    #22d3ee,
+    #38bdf8
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: auroraMove 6s ease-in-out infinite;
+}
+
+@keyframes auroraMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
