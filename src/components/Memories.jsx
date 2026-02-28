@@ -10,7 +10,7 @@ import img3 from "../assets/memories/3.jpg";
 import img4 from "../assets/memories/4.jpg";
 import img5 from "../assets/memories/5.jpg";
 import img6 from "../assets/memories/6.jpg";
-import img7 from "../assets/memories/7.jpg";
+import img7 from "../assets/memories/7.JPG";
 import img8 from "../assets/memories/8.jpg";
 import img9 from "../assets/memories/9.jpg";
 import img10 from "../assets/memories/10.jpg";
