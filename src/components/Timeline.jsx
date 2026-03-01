@@ -69,7 +69,7 @@ export default function Timeline() {
             justify-center
           "
         >
-          {["March 12th", "March 13th"].map((label, i) => (
+          {["March 13th", "March 14th"].map((label, i) => (
             <button
               key={label}
               onClick={() => setDay(i + 1)}
