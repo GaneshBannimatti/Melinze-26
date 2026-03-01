@@ -88,18 +88,18 @@ export default function About() {
                 md:text-lg
               "
             >
-              Smt. Kamala and Sri Venkappa M. Agadi College of Engineering and Technologies is committed to imparting quality education leading to graduation in Engineering & Technology.
+              Smt. Kamala and Sri Venkappa M. Agadi College of Engineering and Technologies is committed to imparting quality education in Engineering & Technology.
               <br /><br />
-              Our aim is to become an institution of excellence through continual improvements in academic standards, measurable objectives, and compliance with statutory and regulatory requirements.
+              The institution strives for excellence through continual improvement in academic standards, effective teaching-learning processes, and compliance with statutory and regulatory requirements.
               <br /><br />
-              Excellence at SKSVMACET reflects professional management, an effective teaching-learning process, and strong career development support for students.
+              Our focus remains on professional management, innovation, and strong career development support for students.
             </p>
 
           </div>
         </div>
 
 
-        {/* Card 2 - CSE Department */}
+        {/* Card 2 - Department */}
         <div
           className="
             group
@@ -151,11 +151,11 @@ export default function About() {
                 md:text-lg
               "
             >
-              The Department of Computer Science & Engineering is one of the most dynamic branches of the institution, committed to building strong foundations in Computer Science along with professional ethics and human values.
+              The Department of Computer Science & Engineering focuses on building strong technical foundations along with professional ethics and human values.
               <br /><br />
-              The department implements NEP-2020 through the 2021 scheme curriculum, enabling students to specialize in emerging technologies such as Artificial Intelligence, Machine Learning, IoT, Big Data Analytics, Data Science, and Cyber Security.
+              Through NEP-2020 curriculum implementation, students gain exposure to emerging technologies such as AI, Machine Learning, IoT, Data Science, and Cyber Security.
               <br /><br />
-              With highly experienced faculty (12+ years average experience), strong industry MOUs, practical-oriented learning, and the active student association FORTUNE, the department has achieved 100% final semester results for five consecutive years and around 80% placements in core IT companies.
+              With experienced faculty, strong industry collaborations, practical-oriented learning, and the FORTUNE student association, the department consistently achieves excellent academic results and strong placements in core IT companies.
             </p>
 
           </div>
