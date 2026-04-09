@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 export default function Countdown() {
 
-  // ✅ NEW DATE → 13 March 2026, 9:00 AM
-  const eventDate = new Date("2026-03-13T09:00:00").getTime();
+  // ✅ FINAL DATE → 25 April 2026, 9:00 AM
+  const eventDate = new Date("2026-04-25T09:00:00").getTime();
 
   const [timeLeft, setTimeLeft] = useState({});
 
@@ -31,34 +31,26 @@ export default function Countdown() {
 
   if (timeLeft.ended) {
     return (
-      <p className="text-cyan-400 text-lg sm:text-xl mt-8">
+      <p className="text-cyan-400 text-lg sm:text-xl mt-6">
         🚀 The Event Has Started!
       </p>
     );
   }
 
   return (
-    <div
-      className="
-        mt-8
-        flex
-        gap-3 sm:gap-6
-        justify-center
-        text-white
-        flex-wrap
-      "
-    >
+    <div className="mt-6 flex gap-3 sm:gap-6 justify-center text-white flex-wrap">
+
       {["days", "hours", "minutes", "seconds"].map((unit) => (
         <div
           key={unit}
           className="
             flex flex-col items-center
-            bg-black/40
-            backdrop-blur-md
-            px-4 sm:px-6
-            py-3 sm:py-4
+            bg-black/40 backdrop-blur-md
+            px-4 sm:px-6 py-3 sm:py-4
             rounded-xl
             border border-cyan-400/30
+            hover:shadow-[0_0_20px_rgba(34,211,238,0.6)]
+            transition
             min-w-[70px] sm:min-w-[90px]
           "
         >
@@ -71,6 +63,7 @@ export default function Countdown() {
           </span>
         </div>
       ))}
+
     </div>
   );
 }

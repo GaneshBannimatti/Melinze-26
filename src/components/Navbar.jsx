@@ -1,29 +1,14 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import SparkleNavbar from "./SparkleNavbar";
-
 import svmaLogo from "../assets/svma.jpeg";
-import codefiestaLogo from "../assets/codefiesta.png";
-import newlogo from "../assets/newlogo.png";
 
 export default function Navbar() {
-  const navigate = useNavigate();
-
-  const items = [
-    "Home",
-    "About",
-    "Prizes",
-    "Themes",
-    "Timeline",
-    "Team",
-    "Contact",
-  ];
+  const items = ["Home", "About", "Events", "Venue", "Contact"];
 
   const [activeItem, setActiveItem] = useState("Home");
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const formLink = "https://forms.gle/whti4Cuq522zndsW9";
-
+  // ✅ SCROLL FUNCTION
   const scrollToSection = (name) => {
     setMobileOpen(false);
 
@@ -35,12 +20,10 @@ export default function Navbar() {
     const el = document.getElementById(name.toLowerCase());
     if (!el) return;
 
-    window.scrollTo({
-      top: el.offsetTop - 80,
-      behavior: "smooth",
-    });
+    el.scrollIntoView({ behavior: "smooth" });
   };
 
+  // ✅ ACTIVE SECTION HIGHLIGHT
   useEffect(() => {
     const sections = items
       .map((i) => document.getElementById(i.toLowerCase()))
@@ -67,30 +50,18 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
-      <div className="flex items-center justify-between px-3 sm:px-6 py-3 bg-neutral-900/95 backdrop-blur-md shadow-lg">
 
-        {/* LOGOS */}
-        <div className="flex items-center gap-2 sm:gap-4">
-          <img
-            src={svmaLogo}
-            alt="SVMA"
-            className="h-8 sm:h-10 md:h-12"
-          />
+      {/* NAVBAR */}
+      <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 py-3 bg-black/80 backdrop-blur-md shadow-lg">
 
-          <img
-            src={codefiestaLogo}
-            alt="CodeFiesta"
-            className="h-8 sm:h-12 md:h-14"
-          />
+        {/* LOGO */}
+        <img
+          src={svmaLogo}
+          alt="College Logo"
+          className="h-8 sm:h-10 md:h-12"
+        />
 
-          <img
-            src={newlogo}
-            alt="New Logo"
-            className="h-8 sm:h-10 md:h-12"
-          />
-        </div>
-
-        {/* DESKTOP NAV */}
+        {/* DESKTOP MENU */}
         <div className="hidden md:flex flex-1 justify-center">
           <SparkleNavbar
             items={items}
@@ -100,10 +71,17 @@ export default function Navbar() {
           />
         </div>
 
-        {/* APPLY BUTTON */}
+        {/* APPLY BUTTON (ALL SCREENS) */}
         <button
-          onClick={() => window.open(formLink, "_blank")}
-          className="hidden md:block bg-cyan-400 text-black px-4 py-2 rounded-lg font-semibold hover:bg-cyan-300 transition"
+          onClick={() => scrollToSection("Events")}
+          className="
+            hidden sm:block
+            bg-cyan-400 text-black
+            px-4 sm:px-5 py-2
+            rounded-xl font-semibold
+            hover:bg-cyan-300
+            transition
+          "
         >
           Apply
         </button>
@@ -119,25 +97,28 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       {mobileOpen && (
-        <div className="md:hidden bg-neutral-900 text-white p-4">
-          <ul className="flex flex-col gap-4 text-center">
+        <div className="md:hidden bg-black text-white p-4">
+          <ul className="flex flex-col gap-4 text-center text-lg">
+
             {items.map((item) => (
               <li key={item}>
                 <button
                   onClick={() => scrollToSection(item)}
-                  className="w-full"
+                  className="w-full hover:text-cyan-400 transition"
                 >
                   {item}
                 </button>
               </li>
             ))}
 
+            {/* APPLY BUTTON MOBILE */}
             <button
-              onClick={() => window.open(formLink, "_blank")}
-              className="bg-cyan-400 text-black px-4 py-2 rounded-lg"
+              onClick={() => scrollToSection("Events")}
+              className="bg-cyan-400 text-black px-4 py-2 rounded-lg mt-2"
             >
               Apply
             </button>
+
           </ul>
         </div>
       )}

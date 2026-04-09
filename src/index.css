@@ -90,3 +90,25 @@ section {
     background-position: 0% 50%;
   }
 }
+@keyframes gradientMove {
+  0% { background-position: 0% }
+  50% { background-position: 100% }
+  100% { background-position: 0% }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientMove 5s ease infinite;
+}
+/* 🔥 Smooth Scroll Fix */
+html, body {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis {
+  height: auto;
+}

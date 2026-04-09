@@ -1,85 +1,55 @@
 import TeamCarousel from "./TeamCarousel";
-
-import arun from "../assets/team/arun.jpg";
-import rajeshwari from "../assets/team/rajeshwari.jpg";
-import nagaraj from "../assets/team/nagaraj.jpg";
-import shrikanth from "../assets/team/shrikanth.jpg";
-import jagadish from "../assets/team/jagadish.jpg";
-
-import gagan from "../assets/team/gagan.jpg";
-import priyanka from "../assets/team/priyanka.jpg";
-import sourabh from "../assets/team/sourabh.jpg";
-import ganesh from "../assets/team/ganesh.jpg";
-import rakshita from "../assets/team/Rakshita.jpg";
-import sneha from "../assets/team/Sneha.jpg";
+import VantaDotsBackground from "./VantaDotsBackground";
 
 export default function Team() {
   const members = [
     {
       id: "1",
-      name: "Dr. Arun Kumar Joshi",
-      role: "Association Coordinator",
-      image: arun,
+      name: "Dr. Parashuram Baraki",
+      role: "Principal & Mentor",
+      email: "parashuram.baraki@gmail.com",
+      phone: "+91 9686042385",
+      image: "https://randomuser.me/api/portraits/men/32.jpg",
     },
     {
       id: "2",
-      name: "Mrs. Rajeshwari G",
-      role: "Faculty Coordinator",
-      image: rajeshwari,
+      name: "Dr. Girish G. Y",
+      role: "Chief Organizer",
+      email: "girish.math@agadiengcollege.com",
+      phone: "+91 9844950991",
+      image: "https://randomuser.me/api/portraits/men/45.jpg",
     },
     {
       id: "3",
-      name: "Mr. Nagaraj B",
-      role: "Faculty Coordinator",
-      image: nagaraj,
+      name: "Dr. Subhash Meti",
+      role: "Dean of Academic",
+      email: "subhash.ece@agadiengcollege.com",
+      phone: "+91 9845675725",
+      image: "https://randomuser.me/api/portraits/men/50.jpg",
     },
     {
       id: "4",
-      name: "Mr. Shrikanth",
-      role: "Faculty Coordinator",
-      image: shrikanth,
+      name: "Dr. Arunkumar Joshi",
+      role: "Chief Coordinator",
+      email: "arunj.cse@agadiengcollege.com",
+      phone: "+91 9663579700",
+      image: "https://randomuser.me/api/portraits/men/60.jpg",
     },
     {
       id: "5",
-      name: "Mr. Jagadish K",
-      role: "Faculty Coordinator",
-      image: jagadish,
+      name: "Mrs. Shridevi Ganiger",
+      role: "Chief Coordinator",
+      email: "shridevig.eee@agadiengcollege.com",
+      phone: "+91 8105572501",
+      image: "https://randomuser.me/api/portraits/women/44.jpg",
     },
     {
       id: "6",
-      name: "Mr. Gagan Angadi",
-      role: "President",
-      image: gagan,
-    },
-    {
-      id: "7",
-      name: "Miss. Priyanka",
-      role: "Vice President",
-      image: priyanka,
-    },
-    {
-      id: "8",
-      name: "Mr. Sourabh Desai",
-      role: "Student Coordinator",
-      image: sourabh,
-    },
-    {
-      id: "9",
-      name: "Mr. Ganesh Bannimatti",
-      role: "Student Coordinator",
-      image: ganesh,
-    },
-    {
-      id: "10",
-      name: "Miss. Rakshita Halagatti",
-      role: "Student Coordinator",
-      image: rakshita,
-    },
-    {
-      id: "11",
-      name: "Miss. Sneha Marabannavar",
-      role: "Student Coordinator",
-      image: sneha,
+      name: "Mr. Amarappa Pagi",
+      role: "Chief Coordinator",
+      email: "amarappa.ece@agadiengcollege.com",
+      phone: "+91 9448666880",
+      image: "https://randomuser.me/api/portraits/men/70.jpg",
     },
   ];
 
@@ -87,30 +57,41 @@ export default function Team() {
     <section
       id="team"
       className="
-        py-16 sm:py-20 md:py-24 lg:py-28
-        px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24
+        relative
+        py-20 sm:py-24 md:py-28
+        px-4 sm:px-6 md:px-10 lg:px-16
         text-white
       "
     >
-      {/* Heading */}
+
+      {/* BACKGROUND */}
+      <VantaDotsBackground />
+
+      {/* HEADING */}
       <h2
         className="
+          relative z-10
           text-center
-          text-2xl
-          sm:text-3xl
-          md:text-4xl
-          lg:text-5xl
+          text-3xl sm:text-4xl md:text-5xl lg:text-6xl
           font-bold
-          mb-8 sm:mb-10
+          mb-12 sm:mb-14
         "
       >
         Our <span className="text-cyan-400">Team</span>
       </h2>
 
-      {/* Carousel */}
-      <div className="max-w-6xl mx-auto flex justify-center">
+      {/* CAROUSEL WRAPPER */}
+      <div
+        className="
+          relative z-10
+          w-full
+          max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl
+          mx-auto
+        "
+      >
         <TeamCarousel members={members} autoPlay={3000} />
       </div>
+
     </section>
   );
 }

@@ -1,93 +1,62 @@
+import EventCard from "./EventCard";
+import VantaDotsBackground from "./VantaDotsBackground";
+
+// ✅ IMPORT IMAGES
+import cse1 from "../assets/events/cse1.jpg";
+import cse2 from "../assets/events/cse2.jpg";
+import ise1 from "../assets/events/ise1.jpg";
+import ise2 from "../assets/events/ise2.jpg";
+import ece1 from "../assets/events/ece1.jpg";
+import ece2 from "../assets/events/ece2.jpg";
+import eee1 from "../assets/events/eee1.jpg";
+import eee2 from "../assets/events/eee2.jpg";
+import civil1 from "../assets/events/civil1.jpg";
+import civil2 from "../assets/events/civil2.jpg";
+import mech1 from "../assets/events/mech1.jpg";
+import mech2 from "../assets/events/mech2.jpg";
+import cultural from "../assets/events/cultural.jpg";
+
 export default function Themes() {
-  const themes = [
-    {
-      title: "Web & Android Development",
-      icon: "🌐📱",
-      desc: "Build modern, scalable, and responsive web applications and innovative Android mobile apps using frontend, backend, APIs, and cloud technologies with strong UI/UX and performance focus.",
-    },
-    {
-      title: "Artificial Intelligence",
-      icon: "🤖",
-      desc: "Develop intelligent systems using Machine Learning, Deep Learning, Computer Vision, NLP, and data-driven models to solve real-world problems and automate complex tasks.",
-    },
+  const formLink = "https://forms.gle/whti4Cuq522zndsW9";
+
+  const events = [
+    { dept: "CSE", title: "Tech Byte - Escape the Room", img: cse1 },
+    { dept: "CSE", title: "Lago Logic Ladder", img: cse2 },
+
+    { dept: "ISE", title: "Blind Coding", img: ise1 },
+    { dept: "ISE", title: "Scan & Seek", img: ise2 },
+
+    { dept: "ECE", title: "Robo Race", img: ece1 },
+    { dept: "ECE", title: "Festronics", img: ece2 },
+
+    { dept: "EEE", title: "Electro Eye Q", img: eee1 },
+    { dept: "EEE", title: "Triple Trio Arena", img: eee2 },
+
+    { dept: "CIVIL", title: "Lineout Demonstration", img: civil1 },
+    { dept: "CIVIL", title: "Super Minute Games", img: civil2 },
+
+    { dept: "MECH", title: "Tech Puzzle", img: mech1 },
+    { dept: "MECH", title: "Mini Boundary Cricket", img: mech2 },
+
+    { dept: "CULTURAL", title: "Cultural Events", img: cultural },
   ];
 
   return (
-    <section
-      id="themes"
-      className="
-        pt-16 sm:pt-20 md:pt-24
-        pb-8 sm:pb-10 md:pb-12
-        text-white
-        px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24
-      "
-    >
-      {/* Heading */}
-      <h2
-        className="
-          text-center
-          text-2xl
-          sm:text-3xl
-          md:text-4xl
-          lg:text-5xl
-          xl:text-6xl
-          font-bold
-          mb-8 sm:mb-10 md:mb-12
-        "
-      >
-        Hackathon <span className="text-cyan-400">Themes</span>
+    <section id="events" className="relative pt-20 pb-12 text-white px-6 md:px-16">
+      <VantaDotsBackground />
+
+      <h2 className="relative z-10 text-center text-3xl md:text-5xl font-bold mb-12">
+        Our <span className="text-cyan-400">Events</span>
       </h2>
 
-      {/* Container */}
-      <div
-        className="
-          max-w-7xl
-          mx-auto
-          grid
-          grid-cols-1
-          sm:grid-cols-2
-          gap-6 sm:gap-8 md:gap-10
-        "
-      >
-        {themes.map((theme, index) => (
-          <div
+      <div className="relative z-10 grid sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        {events.map((event, index) => (
+          <EventCard
             key={index}
-            className="
-              relative group
-              rounded-2xl
-              p-[1px]
-              bg-gradient-to-br
-              from-cyan-400/40
-              to-purple-500/40
-              transition-all duration-500
-              hover:scale-[1.02]
-            "
-          >
-            <div
-              className="
-                h-full
-                rounded-2xl
-                bg-neutral-900/80
-                backdrop-blur-xl
-                p-5 sm:p-6 md:p-8
-                border border-white/10
-                transition-all duration-500
-                group-hover:shadow-[0_0_40px_rgba(34,211,238,0.3)]
-              "
-            >
-              <div className="text-3xl sm:text-4xl md:text-5xl mb-4">
-                {theme.icon}
-              </div>
-
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2">
-                {theme.title}
-              </h3>
-
-              <p className="text-gray-300 text-sm sm:text-base md:text-lg">
-                {theme.desc}
-              </p>
-            </div>
-          </div>
+            {...event}
+            date="25 April 2026"
+            onRegister={() => window.open(formLink, "_blank")}
+          />
         ))}
       </div>
     </section>
