@@ -18,29 +18,22 @@ export default function RippleLoader({
   }));
 
   return (
-    <div
-      className="relative"
-      style={{ width: size, height: size }}
-    >
+    <div className="relative" style={{ width: size, height: size }}>
       {/* Ripple Circles */}
       {rippleBoxes.map((box, i) => (
         <motion.div
           key={i}
-          className="absolute rounded-full border-t backdrop-blur-[5px]"
+          className="absolute rounded-full border backdrop-blur-[5px]" // ✅ fixed
           style={{
             inset: box.inset,
             zIndex: box.zIndex,
-            borderColor: `rgba(100,100,100,${box.opacity})`,
-            background:
-              "linear-gradient(0deg, rgba(50,50,50,0.2), rgba(100,100,100,0.2))",
+            borderWidth: "2px",
+            borderColor: `rgba(150,150,150,${box.opacity})`, // brighter
+            background: "transparent",
           }}
           animate={{
             scale: [1, 1.3, 1],
-            boxShadow: [
-              "rgba(0,0,0,0.3) 0px 10px 10px",
-              "rgba(0,0,0,0.3) 0px 30px 20px",
-              "rgba(0,0,0,0.3) 0px 10px 10px",
-            ],
+            opacity: [0.7, 1, 0.7],
           }}
           transition={{
             repeat: Infinity,

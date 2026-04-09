@@ -1,18 +1,18 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
-// Components
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Events from "./components/Themes";
 import Team from "./components/Team";
 import Footer from "./components/Footer";
+import ParticleBackground from "./components/ParticleBackground"; // ✅ ADD
 
 export default function App() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2, // smooth speed
+      duration: 1.2,
       smoothWheel: true,
       smoothTouch: false,
     });
@@ -29,9 +29,12 @@ export default function App() {
 
   return (
     <>
+      {/* 🔥 PARTICLES ON TOP */}
+      <ParticleBackground />
+
       <Navbar />
 
-      <main>
+      <main className="relative z-10">
         <Hero />
         <About />
         <Events />
