@@ -1,1 +1,6 @@
-require('jiti')(...)
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
