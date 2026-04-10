@@ -1,6 +1,5 @@
 {
-  "installCommand": "npm install",
-  "buildCommand": "chmod +x node_modules/.bin/vite && npm run build",
+  "framework": "vite",
   "outputDirectory": "dist",
   "routes": [
     { "src": "/(.*)", "dest": "/" }
