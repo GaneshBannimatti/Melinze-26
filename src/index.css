@@ -2,7 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 🔥 VERY IMPORTANT (FULL SCREEN FIX) */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* 🔥 GLOBAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 🌌 BACKGROUND */
 body {
+  min-height: 100vh;
+  width: 100%;
+
   background: linear-gradient(
     -45deg,
     #000000,
@@ -14,6 +33,7 @@ body {
   animation: gradientMove 15s ease infinite;
 }
 
+/* 🌈 BACKGROUND ANIMATION */
 @keyframes gradientMove {
   0% {
     background-position: 0% 50%;
@@ -25,11 +45,13 @@ body {
     background-position: 0% 50%;
   }
 }
+
+/* 🔥 NAVBAR OFFSET FIX */
 section {
-  scroll-margin-top: 64px; /* navbar height */
+  scroll-margin-top: 80px;
 }
 
-/* Neon glow utilities */
+/* ✨ GLOW EFFECTS */
 .glow-cyan {
   box-shadow:
     0 0 20px rgba(34, 211, 238, 0.35),
@@ -41,6 +63,8 @@ section {
     0 0 20px rgba(168, 85, 247, 0.35),
     0 0 40px rgba(168, 85, 247, 0.25);
 }
+
+/* 🔄 SCROLL ANIMATION */
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -57,14 +81,18 @@ section {
 .animate-scroll:hover {
   animation-play-state: paused;
 }
+
+/* 🧼 SCROLLBAR HIDE */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-/* 🌈 Aurora Text Effect */
+
+/* 🌈 AURORA TEXT */
 .aurora-text {
   background: linear-gradient(
     120deg,
@@ -90,17 +118,14 @@ section {
     background-position: 0% 50%;
   }
 }
-@keyframes gradientMove {
-  0% { background-position: 0% }
-  50% { background-position: 100% }
-  100% { background-position: 0% }
-}
 
+/* 🔥 EXTRA GRADIENT */
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradientMove 5s ease infinite;
 }
-/* 🔥 Smooth Scroll Fix */
+
+/* 🔥 LENIS FIX */
 html, body {
   scroll-behavior: auto !important;
 }
@@ -111,4 +136,21 @@ html, body {
 
 .lenis {
   height: auto;
+}
+body {
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at center, #020617 0%, #000000 100%);
+}
+body {
+  background: radial-gradient(circle at center, #020617, #000);
+  color: white;
+}
+.glow-text {
+  color: #22d3ee;
+  text-shadow:
+    0 0 10px rgba(34, 211, 238, 0.8),
+    0 0 20px rgba(34, 211, 238, 0.6),
+    0 0 40px rgba(34, 211, 238, 0.5),
+    0 0 80px rgba(34, 211, 238, 0.4);
 }

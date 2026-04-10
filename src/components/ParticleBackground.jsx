@@ -8,8 +8,8 @@ export default function ParticleBackground() {
     const ctx = canvas.getContext("2d");
 
     let particles = [];
-    const particleCount = 120; // 🔥 more visible
-    const maxDistance = 130;
+    const particleCount = 100;
+    const maxDistance = 120;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -23,9 +23,8 @@ export default function ParticleBackground() {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.8;
-        this.vy = (Math.random() - 0.5) * 0.8;
-        this.radius = 2;
+        this.vx = (Math.random() - 0.5) * 0.7;
+        this.vy = (Math.random() - 0.5) * 0.7;
       }
 
       update() {
@@ -38,8 +37,8 @@ export default function ParticleBackground() {
 
       draw() {
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(34,211,238,1)";
+        ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "#22d3ee";
         ctx.fill();
       }
     }
@@ -62,8 +61,7 @@ export default function ParticleBackground() {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(34,211,238,${1.2 - dist / maxDistance})`;
-            ctx.lineWidth = 0.7;
+            ctx.strokeStyle = `rgba(34,211,238,${1 - dist / maxDistance})`;
             ctx.stroke();
           }
         }
@@ -78,9 +76,6 @@ export default function ParticleBackground() {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 z-[1] pointer-events-none"
-    />
+    <canvas className="fixed inset-0 -z-10 pointer-events-none" ref={canvasRef} />
   );
 }

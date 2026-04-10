@@ -1,63 +1,80 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
-function TeamCarousel({ members = [], autoPlay = 0 }) {
+export default function TeamCarousel({ members, autoPlay = 3000 }) {
   const [index, setIndex] = useState(0);
-  const total = members.length;
-
-  const next = useCallback(() => {
-    setIndex((i) => (i + 1) % total);
-  }, [total]);
-
-  const prev = useCallback(() => {
-    setIndex((i) => (i - 1 + total) % total);
-  }, [total]);
 
   useEffect(() => {
-    if (!autoPlay) return;
-    const id = setInterval(next, autoPlay);
-    return () => clearInterval(id);
-  }, [autoPlay, next]);
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % members.length);
+    }, autoPlay);
 
-  if (!total) return null;
+    return () => clearInterval(interval);
+  }, [members.length, autoPlay]);
+
+  const member = members[index];
 
   return (
-    <div className="text-center text-white">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={members[index].id}
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.85 }}
-          transition={{ duration: 0.5 }}
-          className="rounded-xl overflow-hidden shadow-lg"
+    <div className="flex flex-col items-center text-center">
+
+      {/* 🔥 IMAGE CARD */}
+      <div className="relative group">
+
+        {/* Glow */}
+        <div className="absolute inset-0 rounded-3xl bg-cyan-400/20 blur-2xl group-hover:blur-3xl transition duration-300"></div>
+
+        {/* Border Glow */}
+        <div className="absolute inset-0 rounded-3xl border border-cyan-400/20"></div>
+
+        {/* Card */}
+        <div
+          className="
+            relative
+            w-[280px] h-[360px]
+            rounded-3xl
+            overflow-hidden
+            shadow-[0_0_40px_rgba(34,211,238,0.4)]
+            transform transition duration-300
+            group-hover:scale-105
+          "
         >
           <img
-            src={members[index].image}
-            alt={members[index].name}
-            className="w-64 h-64 object-cover mx-auto"
+            src={member.image}
+            alt={member.name}
+            className="w-full h-full object-cover"
           />
-        </motion.div>
-      </AnimatePresence>
+        </div>
+      </div>
 
-      <h3 className="mt-4 text-xl font-semibold text-cyan-400">
-        {members[index].name}
+      {/* NAME */}
+      <h3 className="mt-6 text-xl font-semibold text-cyan-400">
+        {member.name}
       </h3>
-      <p className="text-gray-300">{members[index].role}</p>
 
-      <p className="text-sm text-gray-400 mt-2">
-        📧 {members[index].email}
-      </p>
-      <p className="text-sm text-gray-400">
-        📞 {members[index].phone}
+      {/* ROLE */}
+      <p className="text-gray-400 text-sm">
+        {member.role}
       </p>
 
-      <div className="flex justify-center gap-4 mt-6">
-        <button onClick={prev}>◀</button>
-        <button onClick={next}>▶</button>
+      {/* NAV BUTTONS */}
+      <div className="flex gap-4 mt-6">
+        <button
+          onClick={() =>
+            setIndex((prev) => (prev - 1 + members.length) % members.length)
+          }
+          className="px-3 py-1 bg-cyan-500/20 rounded hover:bg-cyan-500/40"
+        >
+          ◀
+        </button>
+
+        <button
+          onClick={() =>
+            setIndex((prev) => (prev + 1) % members.length)
+          }
+          className="px-3 py-1 bg-cyan-500/20 rounded hover:bg-cyan-500/40"
+        >
+          ▶
+        </button>
       </div>
     </div>
   );
 }
-
-export default TeamCarousel;
