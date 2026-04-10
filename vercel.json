@@ -1,7 +1,8 @@
 {
-  "buildCommand": "npx vite build",
-  "outputDirectory": "dist",
   "framework": "vite",
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist",
   "routes": [
     { "src": "/(.*)", "dest": "/" }
   ]
