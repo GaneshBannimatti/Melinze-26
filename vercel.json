@@ -1,7 +1,6 @@
 {
-  "framework": "vite",
-  "installCommand": "pnpm install",
-  "buildCommand": "pnpm build",
+  "installCommand": "npm install",
+  "buildCommand": "chmod +x node_modules/.bin/vite && npm run build",
   "outputDirectory": "dist",
   "routes": [
     { "src": "/(.*)", "dest": "/" }
